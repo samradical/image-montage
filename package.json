@@ -1,0 +1,21 @@
+{
+  "name": "",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+  },
+  "author": "samelie",
+  "license": "MIT",
+  "repository": {
+    "type": "git"
+  },
+  "devDependencies": {
+    "lodash": "*",
+    "readdir":"*",
+    "rimraf":"*",
+    "yargs":"*",
+    "fs.extra":"*",
+    "shelljs":"*"
+  }
+}
