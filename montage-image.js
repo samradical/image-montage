@@ -13,11 +13,13 @@ const ASPECT = 1.779166667
 //^^^^^
 /*16x9 images */
 
-let DIR = argv.d || ''
+let DIR = argv.d.toString() || ''
 let FORMAT = argv.format || 'jpg'
 let RESIZE = argv.r || 64
 let FPS = Math.round(25 / (argv.fps || 2))
-let PAPERHEIGHT = argv.h || 4961 //A3
+let PAPERHEIGHT = argv.h || 7016 // 4961 //A3
+let PAPERWIDTH = argv.w || 4961 // 3508 //A3
+
 
 
 
@@ -60,8 +62,11 @@ function resizeAllImages(paths){
 function _montage(outDir){
 	let _w = RESIZE * ASPECT
 	let _row = Math.ceil(PAPERHEIGHT / RESIZE)
+	let _col = Math.ceil(PAPERWIDTH / _w)
 	cd(outDir)
-	exec(`montage *.${FORMAT} -tile x${_row} -geometry ${_w}x${RESIZE} _OUT.jpg`)
+	let cmd = `montage *.${FORMAT} -tile ${_col}x${_row} -geometry ${_w}x${RESIZE}+0+0 _OUT.jpg`
+	console.log(cmd);
+	exec(cmd)
 }
 
 selectImages
